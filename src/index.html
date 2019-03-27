@@ -1,14 +1,35 @@
 <html>
   <head>
-    McHawk's Juke Box
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="scripts/main.js"></script>
+    <link rel="stylesheet" href="styles/main.css"/>
   </head>
-  <body>
-    <header>
-      <button>
-        Menu
-      </button>
-      <h3>McHawk's Juke Box</h3>
-      <h1>Now Playing: <em>Despacito</em></h1>
-    </header>
-  </body>
+  <body class="dark">
+  <content id="app">
+    <title>"{{player.currentSong.title}}" on {{appMeta.name}}</title>
+    <header class="light">
+      <h3>{{appMeta.name}}</h3>
+      <h1>Now Playing: {{player.currentSong.title}}</h1>
+      <div>
+        <button v-on:click="voteForSkip"><i class="material-icons">skip_next</i>Skip</button> {{Math.floor(player.numberOfListeners * .5) -  player.skipVotes}} votes needed to skip.
+    </div>
+    <div>
+      There are {{player.numberOfListeners}} active listener(s)!
+    </div>
+  </header v-if="player.isPlaying">
+    <div id="playlist">
+      <ol>
+        <li v-for="s in player.playlist">
+          <button v-on:click="s.upvote()" class="symbol">
+            <i class="material-icons">expand_less</i>
+          </button>
+          <button v-on:click="s.downvote()" class="symbol">
+            <i class="material-icons">expand_more</i>
+          </button> {{s.votes}} votes - {{s.title}}</li>
+      </ol>
+    </div>
+  </content>
+</body>
 </html>
