@@ -65,35 +65,28 @@ func main()  {
   fmt.Println(testVote)
 	fmt.Println("Songs", songList)
 
+	// Host Website
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/", fs)
+
+	// RESTful API
+
   http.HandleFunc("/vote", func(w http.ResponseWriter, r *http.Request) {
+
+		println("   --- New Vote Update! ---")
   	fmt.Fprintf(w, "Recieved vote", html.EscapeString(r.URL.Path))
-		println("Voted Recieved!")
 		reqBody, err := ioutil.ReadAll(r.Body)
 		if err != nil {
 			log.Fatal(err)
 		} else {
-			println("No Don't Crash!", r.Body)
 			castVote(parseVote(string(reqBody)))
 		}
-
+		println("   ---\n")
   })
 
-	http.HandleFunc("/removeVote", func(w http.ResponseWriter, r *http.Request) {
-  	fmt.Fprintf(w, "Recieved vote", html.EscapeString(r.URL.Path))
-		println("RemoveVote Recieved!")
-		reqBody, err := ioutil.ReadAll(r.Body)
-		if err != nil {
-			log.Fatal(err)
-		} else {
-			println("No Don't Crash!", r.Body)
-			removeVote(parseVote(string(reqBody)))
-		}
 
-  })
-
-  log.Fatal(http.ListenAndServe(":8001", nil))
+  log.Fatal(http.ListenAndServe(":8000", nil))
 }
-
 
 
 func parseVote(data string) (vote) {

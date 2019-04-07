@@ -1,4 +1,4 @@
-var host = "localhost";
+var host = "http://localhost:8000";
 
 function uuidv1() {
   if (localStorage.getItem("voterId") == null) {
@@ -9,8 +9,6 @@ function uuidv1() {
   }
   return localStorage.getItem("voterId");
 }
-
-
 
 var app;
 console.log("Hey!");
