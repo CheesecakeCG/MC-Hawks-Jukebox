@@ -1,15 +1,15 @@
 body {
   font-family: Rajdhani, Noto Sans, Roboto, sans-serif;
-  font-size: 4vmin;
+  font-size: 5vw;
 }
 
 i {
   position: relative;
-  font-size: 2vmin;
+  font-size: 2vw;
 }
 
 .dark {
-  background-color: rgb(31, 35, 48);
+  background-color: rgb(27, 29, 34);
   color: rgb(236, 236, 236);
 }
 
@@ -19,27 +19,22 @@ i {
 
 }
 
-header {
-  padding: 1rem;
+#nowPlaying {
+  padding: .5em;
   margin: 2rem;
-  margin-left: 0;
-  margin-right: 0;
-  -webkit-box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .75);
-  -moz-box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .75);
-  box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .75);
-  /* Gradient BKG */
-  background: rgba(250,240,135,1);
-  background: -moz-linear-gradient(top, rgba(250,240,135,1) 0%, rgba(255,179,66,1) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(250,240,135,1)), color-stop(100%, rgba(255,179,66,1)));
-  background: -webkit-linear-gradient(top, rgba(250,240,135,1) 0%, rgba(255,179,66,1) 100%);
-  background: -o-linear-gradient(top, rgba(250,240,135,1) 0%, rgba(255,179,66,1) 100%);
-  background: -ms-linear-gradient(top, rgba(250,240,135,1) 0%, rgba(255,179,66,1) 100%);
-  background: linear-gradient(to bottom, rgba(250,240,135,1) 0%, rgba(255,179,66,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#faf087', endColorstr='#ffb342', GradientType=0 );
+  margin-left: .5;
+  margin-right: .5;
+  border-radius: .3rem;
+  -webkit-box-shadow: 0 0 .5rem 0 rgba(250,240,135);
+  -moz-box-shadow: 0 0 .5rem 0 rgba(250,240,135);
+  box-shadow: 0 0 .5rem 0 rgba(250,240,135);
+  background-color: white;
 }
 
 h1, h2, h3{
   font-family: 'Staatliches', cursive;
+  font-size: 140%;
+  padding: 4px;
 }
 
 button {
@@ -47,15 +42,15 @@ button {
   background-color: rgba(250,240,135);
   border-radius: .3rem;
   cursor: pointer;
-  padding: 2.5vmin;
-  padding-top: 1.5vmin;
-  padding-bottom: 1.5vmin;
-  margin: 2vmin;
+  padding: 3vw;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+  margin: 2vw;
   border: 0;
   -webkit-box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .75);
   -moz-box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .75);
   box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .75);
-  font-size: 5vmin;
+  font-size: 5vw;
   transition: .1s;
   font-family: Rajdhani, Noto Sans, Roboto, sans-serif;
 }
@@ -69,10 +64,10 @@ button {
 }
 
 .symbol{
-  margin-left: .1vmin;
-  margin-right: .1vmin;
-  width: 8vmin;
-  font-size: 6qvmin;
+  margin-left: .1vw;
+  margin-right: .1vw;
+  width: 8vw;
+  font-size: 6qvw;
 }
 
 #playlist ol{
@@ -89,10 +84,11 @@ button {
 
 #nav {
   position: fixed;
-  bottom: 1vmin;
-  right: 1vmin;
+  bottom: 1vw;
+  right: 1vw;
   margin: 0;
   padding: 0;
+  font-size: 6vw;
 }
 
 #nav ul {

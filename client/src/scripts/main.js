@@ -1,4 +1,10 @@
-var host = "http://localhost:8000";
+var host = "http://" + window.location.hostname;
+if (window.location.port != null) {
+  host += ":" + window.location.port;
+}
+// host += "/";
+
+alert(host);
 
 function uuidv1() {
   if (localStorage.getItem("voterId") == null) {
@@ -23,8 +29,8 @@ window.addEventListener("load", function(event) {
         isPlaying: true,
         skipVotes: 0,
         numberOfListeners: 5,
-        playlist: [new Song("Habu - Exit", "ctwNCX3uG_4"), new Song("Travis Wes - Sicko Bomba [CLEAN]", ""), new Song("Sheck Scott - Mo Mode (Big Room Biology Remix) [CLEAN]", "")],
-        currentSong: new Song("Habu - Exit", "ctwNCX3uG_4"),
+        playlist: [new Song("Habu - Exit", "ctwNCX3uG_4"), new Song("Travis Wes - Sicko Bomba [CLEAN]", ""), new Song("Sheck Scott - Mo Mode (Big Room Biology Remix) [CLEAN]", ""), new Song("We Don't Eat Anymore", ""), new Song("Covox - Switchblade Squadron", "")],
+        currentSong: new Song("Covox - Switchblade Squadron", "")
       },
       showFabMenu: false,
       skipEnabled: false

@@ -7,14 +7,17 @@
     <script src="lib/socket.io.dev.js"></script>
     <script src="scripts/main.js"></script>
     <link rel="stylesheet" href="styles/main.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   </head>
   <body class="dark">
   <content id="app">
     <title>"{{player.currentSong.title}}" on {{appMeta.name}}</title>
     <h2 align="center">{{appMeta.name}}</h2>
-    <header align="center" class="light" v-if="player.isPlaying">
+    <header  class="light" id="nowPlaying" v-if="player.isPlaying">
       Now Playing:
-      <h1>{{player.currentSong.title}}</h1>
+      <h1 align="center">{{player.currentSong.title}}</h1>
     </header >
   <div v-if="skipEnabled">
     <button v-on:click="voteForSkip"><i class="material-icons md-48">skip_next</i>Skip</button> {{Math.floor(player.numberOfListeners * .5) -  player.skipVotes}} votes needed to skip. <section align="right">There are {{player.numberOfListeners}} active listener(s)!</section>
@@ -42,13 +45,13 @@
       <ul>
         <div v-if="showFabMenu">
           <li>
-            <button>Add</button>
+            <button onclick="alert('Not Yet Added')">Add New Song</button>
           </li>
           <li>
-            <button>Vote</button>
+            <button onclick="alert('Not Yet Added')">History</button>
           </li>
           <li>
-            <button>History</button>
+            <button onclick="alert('Not Yet Added')">About</button>
           </li>
         </div>
         <li>
