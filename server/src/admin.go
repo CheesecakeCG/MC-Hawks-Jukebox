@@ -10,7 +10,7 @@ import (
 var cachePath string = "/home/chrisd/.cache/mch-jukebox/"
 var youtubeDl = goydl.NewYoutubeDl()
 
-func AddSongToDB(s Song)  {
+func AddSong(s Song)  {
   if _, err := os.Stat(GetSongPath(s)); err == nil {
     fmt.Println("Song,", s.Title, ", already cached!")
   } else if os.IsNotExist(err) {
@@ -19,17 +19,17 @@ func AddSongToDB(s Song)  {
     log.Fatal(err)
     return
   }
-	SongList = append(SongList, s)
+	AddSongToDB(s)
 }
 
 func GetSongPath(s Song) (string) {
-	return cachePath + s.Youtubeid + ".mp3"
+	return cachePath + s.Youtubeid + ".ogg"
 }
 
 func CacheSong(s Song, attempts int) {
 	fmt.Println("Downloading song,", s.Title, "to", GetSongPath(s))
 	youtubeDl.Options.ExtractAudio.Value = true
-	youtubeDl.Options.AudioFormat.Value = "mp3"
+	youtubeDl.Options.AudioFormat.Value = "vorbis"
 	youtubeDl.Options.Output.Value = GetSongPath(s)
 
 	cmd, ytErr := youtubeDl.Download("https://www.youtube.com/watch?v=" + s.Youtubeid)
@@ -63,10 +63,11 @@ func InitAdmin()  {
 
   // go io.Copy(os.Stdout, youtubeDl.Stdout)
   // go io.Copy(os.Stderr, youtubeDl.Stderr)
+//https://www.youtube.com/watch?v=SpbwUC65Zyw
+  // AddSong(Song{"Habu - Exit", "ctwNCX3uG_4", []Vote{}})
+  // AddSong(Song{"Days Of Thunder", "UiSB2Fbw9gs", []Vote{}})
+	//AddSong(Song{"Covox - Switchblade Squadron", "Covox - Switchblade Squadron", []Vote{}})
+	//time.Sleep(4 * time.Second)
 
-  AddSongToDB(Song{"Habu - Exit", "ctwNCX3uG_4", []Vote{}})
-  AddSongToDB(Song{"Days Of Thunder", "UiSB2Fbw9gs", []Vote{}})
-	//AddSongToDB(Song{"Covox - Switchblade Squadron", "Covox - Switchblade Squadron", []Vote{}})
-	PlaySong(SongList[1])
 	fmt.Println("Admin Ready!")
 }
