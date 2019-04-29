@@ -135,8 +135,11 @@ class Song {
         this.removeVote();
         return;
       }
-      setTimeout(getSongList(), 400);
-      localStorage.setItem("playlist", JSON.stringify(app.player.playlist));
+      setTimeout(function(){
+        getSongList();
+        localStorage.setItem("playlist", JSON.stringify(app.player.playlist));
+      }, 2000);
+      
     }
 
 }

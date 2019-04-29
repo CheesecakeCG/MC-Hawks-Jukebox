@@ -68,11 +68,6 @@ func pushSongList() {
 func main()  {
 
 
-	// Host Website
-	fmt.Println("Starting Website!")
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/", fs)
-
 	// RESTful API
 
   http.HandleFunc("/vote", func(w http.ResponseWriter, r *http.Request) {
@@ -117,7 +112,13 @@ func main()  {
 	fmt.Println("\n                                 __                               _     _      _       \n |_|     /\\     \\    /    |/    (_             |    | |    |/    |_    |_)    / \\    \\/\n | |    /--\\     \\/\\/     |\\    __)          \\_|    |_|    |\\    |_    |_)    \\_/    /\\")
 	fmt.Println("                        === [Initialization Complete!] ===\n\n")
 
-  go log.Fatal(http.ListenAndServe(":8000", nil))
+	// Host Website
+	fmt.Println("Starting Website!")
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/", fs)
+
+ 	defer log.Fatal(http.ListenAndServe(":8000", nil))
+
 
 }
 
